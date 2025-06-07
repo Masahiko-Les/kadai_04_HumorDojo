@@ -137,16 +137,12 @@
             from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
         // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "",
-            authDomain: "",
-            projectId: "",
-            storageBucket: "",
-            messagingSenderId: "",
-            appId: ""
+//プッシュする前に消す
+
         };
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app); //RealtimeDBに接続
-        const dbRef = ref(db, "chat"); //RealtimeDB内の"chat"を使う
+        const dbRef = ref(db, "humor"); //RealtimeDB内の"chat"を使う
 //以上がFirebaseの初期設定
 
 
