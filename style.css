@@ -108,7 +108,7 @@ li {
 }
 main{
     width: 90%;
-    height: 1000px;
+    height: 1200px;
     margin:0 auto;
     background-color: #EEEEEE;
     color:black;
@@ -118,16 +118,11 @@ main{
     padding:13px;
     height: 100%;
     background-color: #555555;
-
 }
-
 
 .Theme_Box{
     width:600px;
     margin:30px auto;
-    /* background-color: rgba(213, 142, 111, 0.8); */
-
-    /* background-color: rgba(250, 195, 93, 0.5); */
     background-color: rgb(101, 189, 101,0.3);
     color: black;
     text-align: center;
@@ -143,7 +138,8 @@ main{
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     margin: 20px 0;
-    display: none;  /* Initially hidden */
+    display: none;        
+      /* Initially hidden  */
 }
 
 .answer-form input,
