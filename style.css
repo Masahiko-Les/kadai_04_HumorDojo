@@ -79,7 +79,6 @@ body{
     padding-top: 230px;
     display: block;
     margin: 0 auto;
-
 }
 .sihan_message{
     border: 1px solid black;
@@ -137,7 +136,7 @@ main{
     background-color: #ffe5b4;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    margin: 20px 0;
+
     /* display: none;         */
       /* Initially hidden  */
 }

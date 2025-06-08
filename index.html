@@ -13,12 +13,6 @@
 </head>
 <body>
 
-
-
-
-
-
-
 <!-- ヘッダー -->
 <header>
         <div id="header">
@@ -49,83 +43,23 @@
         <div class="Theme_title">テレビを見ていたらリビングにゴキブリが1匹いるのを発見しました<br>あなたはどうしますか？</div>
 
         <div class="answer-form">
-            <input type="text" id="your_name" name="your_name" placeholder="あなたの名前"><br>
-            <textarea id="your_answer1" name="your_answer1" rows="4" cols="40" placeholder="ここにあなたの答えを書いてください"></textarea><br>
+            <input type="text" id="YourName" name="YourName" placeholder="あなたの名前"><br>
+            <textarea id="YourAnswer" name="YourAnswer" rows="4" cols="40" placeholder="ここにあなたの答えを書いてください"></textarea><br>
             <button id="submit">送信</button>
         </div>
     </div>
-
     <div id="answer_output_area_wrapper">
         <div>～ユーモア回答～</div>
         <div class="answer_output_area"></div>
     </div>
 
-    <!-- <div class="Theme_Box">
-        <div class="Theme_No">No.00023</div>
-        <div class="Theme_title">あなたは、ある日突然、全ての食べ物が甘い世界に転生しました。<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
 
-        <div class="answer-form">
-            <textarea id="your_answer1" name="your_answer1" rows="4" cols="40" placeholder="ここにあなたの答えを書いてください"></textarea><br>
-            <button id="submit">送信</button>
-        </div>
-    </div> -->
-
-
-
-<!-- 
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00023</div>
-        <div class="Theme_title">あなたは、ある日突然、全ての食べ物が甘い世界に転生しました。<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00024</div>
-        <div class="Theme_title">あなたは、ある日突然、1日が30時間になった世界に転生しました。<br>その時間をどう活用しますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00025</div>
-        <div class="Theme_title">あなたは、ある日突然、言葉が通じない世界に転生しました。<br>どのようにコミュニケーションを取りますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-
-
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00027</div>
-        <div class="Theme_title">あなたは、親の借金を1億円肩代わりすることになりました<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00028</div>
-        <div class="Theme_title">あなたは、不治の病になりました<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00029</div>
-        <div class="Theme_title">あなたは、ある日突然、地球上の全ての動物が消えた世界に転生しました。<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00030</div>
-        <div class="Theme_title">あなたは、ある日突然、重力が10倍になった世界に転生しました。<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-    <div class="Theme_Box">
-        <div class="Theme_No">No.00031</div>
-        <div class="Theme_title">あなたは、ある日突然、全ての電子機器が使えない世界に転生しました。<br>あなたはどうしますか？</div>
-        <div class="Theme_text"></div>
-    </div>
-
-    <div>・・・</div> -->
-    <div> 　</div>
 </main>
 <footer>
         <div id="footer">
             <div>ユーモア道場</div>
             <div>Copyright © 2025 ○○ All Rights Reserved.</div>
             <div>このサイトは、ユーモアを学ぶための道場です。</div>
-            <div> </div>
         </div>
 </footer>
 <!-- FireBase -->
@@ -135,28 +69,52 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
         import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
             from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-//プッシュする前に消す
 
-        };
+        // Firebase Configの読み込み (from以降のpathは置いたところへの相対path)
+        import firebaseConfig from "./firebaseConfig.js"
+
+        // 読み込んだfirebaseConfigで初期化
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app); //RealtimeDBに接続
         const dbRef = ref(db, "humor"); //RealtimeDB内の"chat"を使う
-//以上がFirebaseの初期設定
-
+        //以上がFirebaseの初期設定
 
         //データ登録(Click)
         $("#submit").on("click", function () {
-            const msg = {
-                uname: $("#your_name").val(),
-                text: $("#your_answer1").val()
+            //オブジェクトデータを作成
+            const msg = { 
+                uname: $("#YourName").val(),
+                text: $("#YourAnswer").val(),
             }
             const newPostRef = push(dbRef); //ユニークKEYを生成
-            set(newPostRef, msg);           //"chat"にユニークKEYをつけてオブジェクトデータを登録
+            set(newPostRef, msg);           //"humor"にユニークKEYをつけてオブジェクトデータを登録
+
+            $('#YourName').val('');         // 名前入力欄をクリア
+            $('#YourAnswer').val('');       // 入力欄をクリア
         });
 
+        //最初にデータ取得＆onSnapshotでリアルタイムにデータを取得
+        onChildAdded(dbRef, function (data) {//firebaseが用意しているおまじない。このおまじないは、全自動で、データが登録されていたら勝手に取得してくれるもの。
 
+            //HTML側に反映
+            let name= $('#YourName').val();
+            let answer = $('#YourAnswer').val();
+            let html = '<div class="answer"><strong>' + name + ':</strong> ' + answer + '</div>'+ '<br>';
+            $('.answer_output_area').append(html);//HTMLに追加
+
+
+            // const msg = data.val();//dataに集約されている。
+            // const key = data.key;
+            // //テンプレートリテラル
+            // let html=`
+            //     <div id="${key}">
+            //         <p>${msg.uname}</p>
+            //         <p>${msg.text}</p>
+            //     </div>   
+            //     `;
+            // //データを表示
+            // $("#output").append(html);
+        });
 
 
 
