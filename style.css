@@ -42,21 +42,16 @@ body{
     background-color:#333333;
     color: white;
     text-align: center;
-
     position: fixed;
     display: flex;
     justify-content: space-between;
-
     box-shadow:#333333 0px 1px 2px;
 }
 
 #logo{
     width: 15%;
-    
     height: 50px;
     margin:14px;
-
-
 }
 #nav{
     margin-right: 20px;
@@ -137,7 +132,7 @@ main{
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 
-    /* display: none;         */
+    display: none;        
       /* Initially hidden  */
 }
 

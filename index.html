@@ -71,7 +71,7 @@
             from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
 
         // Firebase Configの読み込み (from以降のpathは置いたところへの相対path)
-        import firebaseConfig from "./firebaseConfig.js"
+        import firebaseConfig from "./firebaseConfig.js"    //※gitignore設定にしている！！！！
 
         // 読み込んだfirebaseConfigで初期化
         const app = initializeApp(firebaseConfig);
@@ -97,23 +97,19 @@
         onChildAdded(dbRef, function (data) {//firebaseが用意しているおまじない。このおまじないは、全自動で、データが登録されていたら勝手に取得してくれるもの。
 
             //HTML側に反映
-            let name= $('#YourName').val();
-            let answer = $('#YourAnswer').val();
-            let html = '<div class="answer"><strong>' + name + ':</strong> ' + answer + '</div>'+ '<br>';
+            const msg = data.val();//dataに集約されている。
+            const key = data.key;
+            //テンプレートリテラル
+            let html=`
+                <div class="answer_output" id="${key}">
+                    <div>
+                        <strong>${msg.uname}:</strong>
+                    </div>
+                    <div>${msg.text}</div>
+                </div>
+                <br>
+                `;
             $('.answer_output_area').append(html);//HTMLに追加
-
-
-            // const msg = data.val();//dataに集約されている。
-            // const key = data.key;
-            // //テンプレートリテラル
-            // let html=`
-            //     <div id="${key}">
-            //         <p>${msg.uname}</p>
-            //         <p>${msg.text}</p>
-            //     </div>   
-            //     `;
-            // //データを表示
-            // $("#output").append(html);
         });
 
 
