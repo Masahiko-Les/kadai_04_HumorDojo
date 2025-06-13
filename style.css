@@ -114,21 +114,46 @@ main{
     background-color: #555555;
 }
 
+#Next_Thema_button_wrapper{
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: right;
+}
+#Next_Thema_button{
+    width: 100px;
+    height: 30px;
+    padding-top: 10px;
+    background-color: rgb(101, 189, 101,0.3) ;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: ;
+}
+#Next_Thema_button:hover{
+    background-color: rgb(101, 189, 101);
+    cursor: pointer;
+}
+
+
 .Theme_Box{
     width:600px;
-    margin:30px auto;
+    margin:0px auto;
     background-color: rgb(101, 189, 101,0.3);
     color: black;
     text-align: center;
     border-radius: 5px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
+.Theme_Box:hover{
+    background-color: rgb(101, 189, 101);
+    cursor: pointer;
+}
 .answer-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
     padding: 20px;
-    background-color: #ffe5b4;
+    background-color: rgb(101, 189, 101,0.3);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 
@@ -162,6 +187,12 @@ main{
     background-color: #555555;
 }
 
+#answer_output_area_wrapper{
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 .Theme_No{
     text-align: right;
